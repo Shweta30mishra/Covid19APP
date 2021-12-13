@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="324dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Provincename"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/PaleTurquoise"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/CornflowerBlue"
+            android:textSize="30sp"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/reportedCases"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:background="@color/Tan"
+
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/activeCases"
+                android:layout_width="210dp"
+                android:layout_height="match_parent"
+                android:background="@color/Goldenrod"
+
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/recoveredCases"
+                android:layout_width="200dp"
+                android:layout_height="129dp"
+                android:background="@color/OliveDrab"
+
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/totalDeath"
+                android:layout_width="205dp"
+                android:layout_height="match_parent"
+                android:background="@color/Gray"
+
+                android:textColor="@color/black"
+                android:textSize="25sp" />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/dateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
