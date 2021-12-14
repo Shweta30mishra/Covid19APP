@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity implements NetworkingService
 
 
     @Override
-    public void APINetworkListner(String jsonString) {
+    public void APINetworkListner(String jsonString,String provinceCode) {
 
-       ArrayList<Summary> covidData = jsonService.parseCovidAPIData(jsonString);   //call jsonService
+       ArrayList<Summary> covidData = jsonService.parseCovidAPIData(jsonString, provinceCode);   //call jsonService
         mAdapter = new RecyclerAdapter(this,covidData);
 
         recyclerView.setAdapter((RecyclerView.Adapter) mAdapter);      //Set Adapter for Recyacler View

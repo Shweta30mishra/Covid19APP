@@ -64,4 +64,12 @@ public class DatabaseService {
             }
         });
     }
+    public void deleteProvinceByProvinceCode(String provinceCode){
+        provincesExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                dbInstance.getDao().deleteProvincebyProvinceCode(provinceCode);
+            }
+        });
+    }
 }

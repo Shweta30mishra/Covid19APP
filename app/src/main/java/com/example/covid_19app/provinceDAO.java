@@ -18,5 +18,7 @@ public interface  provinceDAO {
     @Query("SELECT * FROM SaveProvince")
     List<SaveProvince> getAllProvinces();
 
+   @Query("DELETE FROM SaveProvince WHERE provinceID = :provinceCode")
+    void deleteProvincebyProvinceCode(String provinceCode);
 
 }

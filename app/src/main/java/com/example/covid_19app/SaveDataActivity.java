@@ -13,12 +13,12 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SaveDataActivity extends AppCompatActivity implements DatabaseService.DatabaseListener,NetworkingService.NetworkingListener, AdapterView.OnItemSelectedListener {
+public class SaveDataActivity extends AppCompatActivity implements DatabaseService.DatabaseListener, NetworkingService.NetworkingListener, AdapterView.OnItemSelectedListener {
     DatabaseService dbService;
     NetworkingService networkingService;
     JsonService jsonService;
     RecyclerView recyclerView;
-    ProvincedbAdapter   Adapter;
+    ProvincedbAdapter Adapter;
     ArrayList<Summary> covidData;
     private RecyclerView.LayoutManager layoutManager;
 
@@ -26,21 +26,21 @@ public class SaveDataActivity extends AppCompatActivity implements DatabaseServi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_data);
-        dbService = ((myApp)getApplication()).getDbService();
+        dbService = ((myApp) getApplication()).getDbService();
         dbService.getDbInstance(this);
         dbService.getAllProvincesFromDB();
         dbService.listener = this;
 
-        networkingService = ( (myApp)getApplication()).getNetworkingService();
+        networkingService = ((myApp) getApplication()).getNetworkingService();
         networkingService.listener = this;
-        jsonService = ( (myApp)getApplication()).getJsonService();
+        jsonService = ((myApp) getApplication()).getJsonService();
 
 
         recyclerView = findViewById(R.id.SaveProvince);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-       // recyclerView.setHasFixedSize(true);
-         covidData= new ArrayList<Summary>();
+        // recyclerView.setHasFixedSize(true);
+        covidData = new ArrayList<Summary>();
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
@@ -49,20 +49,21 @@ public class SaveDataActivity extends AppCompatActivity implements DatabaseServi
     @Override
     public void databaseProvincesListener(List<SaveProvince> dbProvince) {
 
-        for(int i=0;i<dbProvince.size();i++){
-      networkingService.fetchCovidData("summary?loc="+dbProvince.get(i).getProvinceID());
-    }
+        for (int i = 0; i < dbProvince.size(); i++) {
+            networkingService.fetchCovidData("summary?loc=" + dbProvince.get(i).getProvinceID());
+        }
     }
 
     @Override
-    public void APINetworkListner(String jsonString) {
-         covidData.add(jsonService.parseCovidAPIData(jsonString).get(0));
-       // Adapter = new RecyclerAdapter(this,covidData);
-        Adapter = new ProvincedbAdapter(this,covidData);
+    public void APINetworkListner(String jsonString, String provinceCode) {
+        covidData.add(jsonService.parseCovidAPIData(jsonString, provinceCode).get(0));
+        // Adapter = new RecyclerAdapter(this,covidData);
+        Adapter = new ProvincedbAdapter(this, covidData);
         recyclerView.setAdapter((RecyclerView.Adapter) Adapter);      //Set Adapter for Recyacler View
         Adapter.notifyDataSetChanged();
 
     }
+
     ItemTouchHelper.SimpleCallback simpleItemTouchCallback = new ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.DOWN, ItemTouchHelper.LEFT |
             ItemTouchHelper.RIGHT |
@@ -75,14 +76,14 @@ public class SaveDataActivity extends AppCompatActivity implements DatabaseServi
 
             return false;
         }
+
         @Override
         public void onSwiped(RecyclerView.ViewHolder viewHolder, int swipeDir) {
             //Remove swiped item from list and notify the RecyclerView
             int position = viewHolder.getAdapterPosition();
-            SaveProvince saveProvince = new SaveProvince();
-          //  saveProvince.getProvinceID();
-        //   dbService.deleteProvince(saveProvince.setProvinceID(covidData.get(position).););
-           Adapter.listRecyclerItem.remove(position);
+            dbService.deleteProvinceByProvinceCode(covidData.get(position).getProvinceCode());
+
+            Adapter.listRecyclerItem.remove(position);
 
             // Adapter.carList.remove(position);
             // we have to remove it from db as well

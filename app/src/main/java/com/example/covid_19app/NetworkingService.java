@@ -19,7 +19,7 @@ String covidUrl= "https://api.opencovid.ca/";
     static Handler networkHander = new Handler(Looper.getMainLooper());
 
     interface NetworkingListener {
-        void APINetworkListner(String jsonString);
+        void APINetworkListner(String jsonString, String provinceCode);
 
     }
 
@@ -30,7 +30,7 @@ String covidUrl= "https://api.opencovid.ca/";
         connect(completeURL);
     }
 
-    private void connect(String covidUrl) {
+    private void connect(String CompleteCovidUrl) {
         networkingExecutor.execute(new Runnable() {
             String jsonString = "";
             @Override
@@ -38,7 +38,7 @@ String covidUrl= "https://api.opencovid.ca/";
 
                 HttpURLConnection httpURLConnection = null;
                 try {
-                    URL urlObject = new URL(covidUrl);
+                    URL urlObject = new URL(CompleteCovidUrl);
                     httpURLConnection = (HttpURLConnection) urlObject.openConnection();
                     httpURLConnection.setRequestMethod("GET");
                     httpURLConnection.setRequestProperty("Content-Type","application/json");
@@ -57,7 +57,7 @@ String covidUrl= "https://api.opencovid.ca/";
                             @Override
                             public void run() {
                                 //send data to main thread
-                                listener.APINetworkListner(finalJson);
+                                listener.APINetworkListner(finalJson, CompleteCovidUrl.substring(CompleteCovidUrl.length()-2,CompleteCovidUrl.length()));
                             }
                         });
                     }

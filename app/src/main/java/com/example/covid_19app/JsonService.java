@@ -7,7 +7,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class JsonService {
-    public ArrayList<Summary> parseCovidAPIData(String jsonCovidString) {
+    public ArrayList<Summary> parseCovidAPIData(String jsonCovidString,String provinceCode) {
 
         ArrayList<Summary> covidDataList = new ArrayList<>(0);
         try {
@@ -30,6 +30,7 @@ public class JsonService {
                 covidData.setDeaths(death_cases);
                 covidData.setDate(date);
                 covidData.setProvince(provincename);
+                covidData.setProvinceCode(provinceCode);
                 covidDataList.add(covidData);
             }
 
