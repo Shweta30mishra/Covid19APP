@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/PaleTurquoise"
+            android:layout_gravity="center"
             android:textSize="25sp" />
 
         <TextView
@@ -23,7 +24,7 @@
             android:layout_height="wrap_content"
             android:background="@color/CornflowerBlue"
             android:textSize="30sp"
-
+           android:gravity="center"
             />
 
         <LinearLayout
@@ -37,7 +38,7 @@
                 android:layout_width="200dp"
                 android:layout_height="match_parent"
                 android:background="@color/Tan"
-
+                android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="25sp" />
 
@@ -46,7 +47,7 @@
                 android:layout_width="210dp"
                 android:layout_height="match_parent"
                 android:background="@color/Goldenrod"
-
+                android:gravity="center"
                 android:textColor="@color/black"
                 android:textSize="25sp" />
 
@@ -63,16 +64,14 @@
                 android:layout_width="200dp"
                 android:layout_height="129dp"
                 android:background="@color/OliveDrab"
-
                 android:textColor="@color/black"
                 android:textSize="25sp" />
 
             <TextView
                 android:id="@+id/totalDeath"
-                android:layout_width="205dp"
+                android:layout_width="203dp"
                 android:layout_height="match_parent"
                 android:background="@color/Gray"
-
                 android:textColor="@color/black"
                 android:textSize="25sp" />
 

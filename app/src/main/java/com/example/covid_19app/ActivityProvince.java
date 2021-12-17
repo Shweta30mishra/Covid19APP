@@ -27,8 +27,7 @@ import android.widget.ArrayAdapter;
 public class ActivityProvince extends AppCompatActivity implements NetworkingService.NetworkingListener, AdapterView.OnItemSelectedListener,DatabaseService.DatabaseListener{
 
     Spinner spin;
-   // String[] provinceList;
-   // ArrayList<ProvinceClass> arraylist = new ArrayList<ProvinceClass>();
+
    private ArrayList<ProvinceClass> provinceList;
     private SpinnerAdapter spinnerAdapter;
 
@@ -55,7 +54,7 @@ public class ActivityProvince extends AppCompatActivity implements NetworkingSer
 
        initList();
         spin = findViewById(R.id.spinner);
-    //    spin.setOnItemSelectedListener(this);
+    ///    spin.setOnItemSelectedListener(this);
 
 
         recyclerView = findViewById(R.id.recyclerviewProvince);
@@ -64,7 +63,7 @@ public class ActivityProvince extends AppCompatActivity implements NetworkingSer
         recyclerView.setHasFixedSize(true);
         // Generate sample data
         spinnerAdapter = new SpinnerAdapter(this, provinceList);
-        spin.setAdapter(spinnerAdapter);
+        spin.setAdapter(spinnerAdapter);                               //set spinner adapter
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -157,17 +156,16 @@ public class ActivityProvince extends AppCompatActivity implements NetworkingSer
     }
 
     public void provinceclicked(View view) {
-      //  Intent intent = new Intent(this,SaveDataActivity.class);
-      //  startActivity(intent);
-        SaveProvince saveProvince = new SaveProvince();
+
+        SaveProvince saveProvince = new SaveProvince();     //SaveProvince is an entity for room database
         saveProvince.setProvinceID(provinceCode);
-        dbService.saveNewProvince(saveProvince);
+        dbService.saveNewProvince(saveProvince);      //save data into room database
 
     }
 
     public void ShowClicked(View view) {
         Intent intent = new Intent(this,SaveDataActivity.class);
-        startActivity(intent);
+        startActivity(intent);     //connect to last activity
     }
 
     @Override

@@ -60,12 +60,12 @@ public class MainActivity extends AppCompatActivity implements NetworkingService
 
     public void provinceClicked(View view) {
         Intent intent = new Intent(this,ActivityProvince.class);
-        startActivity(intent);
+        startActivity(intent);      //for second activity
 
     }
 
     public void ShowPressed(View view) {
         Intent intent = new Intent(this,SaveDataActivity.class);
-        startActivity(intent);
+        startActivity(intent);     //for last activity
     }
 }

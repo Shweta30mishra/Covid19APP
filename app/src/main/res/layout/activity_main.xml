@@ -72,7 +72,7 @@ app:layout_constraintTop_toBottomOf="@id/recyclerview"
             android:background="@drawable/rounded_button"
             android:focusable="true"
             android:onClick="provinceClicked"
-            android:text="Province wise data" />
+            android:text="Province  data" />
 
         <Button
             android:id="@+id/Show"
@@ -82,7 +82,7 @@ app:layout_constraintTop_toBottomOf="@id/recyclerview"
             android:background="@drawable/rounded_button"
             android:focusable="true"
             android:onClick="ShowPressed"
-            android:text="Show Fav" />
+            android:text="Show Favorite" />
     </LinearLayout>
 
 

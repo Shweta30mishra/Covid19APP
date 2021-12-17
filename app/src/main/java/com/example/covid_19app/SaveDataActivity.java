@@ -43,7 +43,7 @@ public class SaveDataActivity extends AppCompatActivity implements DatabaseServi
         covidData = new ArrayList<Summary>();
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleItemTouchCallback);
-        itemTouchHelper.attachToRecyclerView(recyclerView);
+        itemTouchHelper.attachToRecyclerView(recyclerView);   //for swip delete from database
     }
 
     @Override
@@ -84,9 +84,6 @@ public class SaveDataActivity extends AppCompatActivity implements DatabaseServi
             dbService.deleteProvinceByProvinceCode(covidData.get(position).getProvinceCode());
 
             Adapter.listRecyclerItem.remove(position);
-
-            // Adapter.carList.remove(position);
-            // we have to remove it from db as well
 
             Adapter.notifyDataSetChanged();
 

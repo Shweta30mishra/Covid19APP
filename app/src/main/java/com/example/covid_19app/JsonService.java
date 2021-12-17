@@ -23,7 +23,7 @@ public class JsonService {
                 int death_cases = covidObject.getInt("deaths");
                 String date = covidObject.getString("date");
                 String provincename = covidObject.getString("province");
-                Summary covidData = new Summary();
+                Summary covidData = new Summary();        //covidData is an object for Summary class
                 covidData.setActive_cases(active_cases);
                 covidData.setCumulative_cases(repoarted_cases);
                 covidData.setRecovered(recovered_cases);
